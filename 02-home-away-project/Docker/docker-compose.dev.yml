@@ -1,0 +1,25 @@
+services:
+  bd-airbnb-api:
+    container_name: bd-airbnb-api
+    build:
+      dockerfile: Docker/Dockerfile.dev
+      context: ..
+      target: development
+    user: "${UID:-1000}:${GID:-1000}"
+    volumes:
+      # Mount entire workspace for turborepo hot reload
+      - ..:/usr/src/bd-airbnb
+      - /usr/src/bd-airbnb/node_modules
+    environment:
+      - NODE_ENV=development
+      - PORT=3001
+    ports:
+      - "3001:3001" # HTTP API (host:container)
+    networks:
+      - collaboration-network
+    restart: unless-stopped
+
+# Define networks
+networks:
+  collaboration-network:
+    driver: bridge
