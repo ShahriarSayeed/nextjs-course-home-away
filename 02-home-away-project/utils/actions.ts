@@ -125,7 +125,8 @@ export const updateProfileImageAction = async (
   try {
     const image = formData.get('image') as File;
     const validatedFields = validateWithZodSchema(imageSchema, { image });
-    const fullPath = await uploadImage(validatedFields.image);
+    const fullPath = "no-path";
+    // const fullPath = await uploadImage(validatedFields.image);
 
     await db.profile.update({
       where: {
@@ -154,7 +155,7 @@ export const createPropertyAction = async (
 
     const validatedFields = validateWithZodSchema(propertySchema, rawData);
     const validatedFile = validateWithZodSchema(imageSchema, { image: file });
-    const fullPath = await uploadImage(validatedFile.image);
+    const fullPath = "no-path";
 
     await db.property.create({
       data: {
@@ -603,7 +604,8 @@ export const updatePropertyImageAction = async (
   try {
     const image = formData.get('image') as File;
     const validatedFields = validateWithZodSchema(imageSchema, { image });
-    const fullPath = await uploadImage(validatedFields.image);
+    // const fullPath = await uploadImage(validatedFields.image);
+    const fullPath = "no-path";
 
     await db.property.update({
       where: {

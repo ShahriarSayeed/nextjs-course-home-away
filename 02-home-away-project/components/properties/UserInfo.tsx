@@ -9,13 +9,14 @@ type UserInfoProps = {
 function UserInfo({ profile: { profileImage, firstName } }: UserInfoProps) {
   return (
     <article className='grid grid-cols-[auto,1fr] gap-4 mt-4'>
-      <Image
+      {/* <Image
         src={profileImage}
         alt={firstName}
         width={50}
         height={50}
         className='rounded w-12 h-12 object-cover'
-      />
+      /> */}
+      <div>Test image</div>
       <div>
         <p>
           Hosted by <span className='font-bold'> {firstName}</span>

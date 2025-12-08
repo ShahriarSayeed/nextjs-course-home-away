@@ -9,14 +9,15 @@ function ImageContainer({
 }) {
   return (
     <section className='h-[300px] md:h-[500px] relative mt-8'>
-      <Image
+      {/* <Image
         src={mainImage}
         fill
         sizes='100vw'
         alt={name}
         className='object-cover rounded'
         priority
-      />
+      /> */}
+      <div>Test image</div>
     </section>
   );
 }

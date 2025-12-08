@@ -14,13 +14,14 @@ function PropertyCard({ property }: { property: PropertyCardProps }) {
     <article className='group relative'>
       <Link href={`/properties/${propertyId}`}>
         <div className='relative h-[300px] mb-2 overflow-hidden rounded-md'>
-          <Image
+          {/* <Image
             src={image}
             fill
             sizes='(max-width:768px) 100vw, 50vw'
             alt={name}
             className='rounded-md object-cover transform group-hover:scale-110 transition-transform duration-500'
-          />
+          /> */}
+          <div>Test image</div>
         </div>
         <div className='flex justify-between items-center'>
           <h3 className='text-sm font-semibold mt-1'>

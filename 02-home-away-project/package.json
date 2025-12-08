@@ -6,9 +6,11 @@
     "dev": "next dev",
     "build": "npx prisma generate && next build",
     "start": "next start",
-    "lint": "next lint",    
-    "docker:dev:up": "UID=$(id -u) GID=$(id -g) docker compose -f Docker/docker-compose.dev.yml up",
-    "docker:dev:build": "UID=$(id -u) GID=$(id -g) docker compose -f Docker/docker-compose.dev.yml build",
+    "lint": "next lint",
+    "docker:dev:up": "docker compose -f Docker/docker-compose.dev.yml up",
+    "docker:dev:build": "docker compose -f Docker/docker-compose.dev.yml build",
+    "docker:dev:up:fixes": "UID=$(id -u) GID=$(id -g) docker compose -f Docker/docker-compose.dev.yml up",
+    "docker:dev:build:fixes": "UID=$(id -u) GID=$(id -g) docker compose -f Docker/docker-compose.dev.yml build",
     "docker:dev:down": "docker compose -f Docker/docker-compose.dev.yml down"
   },
   "dependencies": {

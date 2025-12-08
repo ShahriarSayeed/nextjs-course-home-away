@@ -1,0 +1,46 @@
+FROM node:22-slim as base
+
+RUN apt update
+
+# Install OpenSSL 3.0 for compatibility with Prisma on Alpine Linux
+RUN apt install -y wget ca-certificates
+RUN wget https://www.openssl.org/source/openssl-3.0.10.tar.gz
+RUN tar -xvf openssl-3.0.10.tar.gz
+WORKDIR /openssl-3.0.10
+RUN ./config
+RUN make
+RUN make install
+
+# RUN apt add openssl3.0-compat
+# RUN apk add --no-cache openssl3-libs
+
+WORKDIR /usr/src/bd-airbnb
+
+# COPY package*.json ./
+
+# # Copy workspace configuration
+# COPY .npmrc ./
+
+# # RUN npm install
+# # Install all dependencies
+# RUN npm ci
+
+
+
+# COPY /. ./
+
+COPY . .
+
+# RUN npx prisma generate
+# RUN npx prisma generate --binary-targets native linux-musl-openssl-3.0.x
+# RUN PRISMA_CLI_BINARY_TARGETS="linux-musl-openssl-3.0.x" npx prisma generate
+
+FROM base as development
+
+# WORKDIR /usr/src/bd-airbnb
+
+# RUN chown -R 1000:1000 /usr/src/bd-airbnb
+
+EXPOSE 3005
+
+CMD [ "npm", "run", "dev" ]
